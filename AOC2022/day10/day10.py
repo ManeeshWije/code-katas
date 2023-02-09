@@ -1,28 +1,41 @@
-cycle = 0
-sum = 0
-value = 1
-img = [] 
-for i in range(6):
-  img.append(['']* 40)
-print(img)
+from collections import defaultdict
 
-def runCycle():
-  global cycle
-  global sum
-  cycle += 1
-  if cycle % 40 == 20:
-    sum += cycle * value
-  
+
 def p1():
-  data = open('input.txt', 'r').read().strip().split('\n')
-  global value
-  for line in data:
-    section = line.split(' ')
-    if section[0] == 'noop':
-      runCycle()
-    elif section[0] == 'addx':
-      for _ in range(2):
-        runCycle()
-      value += int(section[1])
-  print(sum)
+    signal = []
+    cycles = defaultdict(int)
+    sigStrength = {}
+
+    X = 1
+    cycle = 1
+    realCycles = [20, 60, 100, 140, 180, 220]
+    total = 0
+
+    with open("input.txt", "r") as file:
+        for line in file:
+            signal.append(line.strip())
+
+    for command in signal:
+        cycles[cycle] = X
+        if command == "noop":
+            cycle += 1
+            cycles[cycle] = X
+
+        elif command.startswith("addx"):
+            V = int(command.split(" ")[-1])
+            for i in range(2):
+                cycle += 1
+                cycles[cycle] = X
+            X += V
+            cycles[cycle] = X
+
+    for cycle, X in cycles.items():
+        sigStrength[cycle] = cycle * X
+
+    for cycle in realCycles:
+        total += sigStrength[cycle]
+
+    print(total)
+
+
 p1()

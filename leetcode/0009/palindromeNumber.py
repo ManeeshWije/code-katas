@@ -21,3 +21,30 @@ Constraints:
  
 Follow up: Could you solve it without converting the integer to a string?
 """
+
+
+def palindromeNumber(x):
+    if x < 0:
+        return False
+    # xString = str(x)
+
+    # l = 0
+    # r = len(xString) - 1
+    # while l < r:
+    #     if xString[l] != xString[r]:
+    #         return False
+    #     l += 1
+    #     r -= 1
+    # return True
+
+    # return xString == xString[::-1]
+
+    inputNum = x
+    res = 0
+    while x > 0:
+        res = res * 10 + x % 10
+        x = x // 10
+    return res == inputNum
+
+
+print(palindromeNumber(-121))
