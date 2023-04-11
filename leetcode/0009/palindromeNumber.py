@@ -38,6 +38,8 @@ def palindromeNumber(x):
     # return True
 
     # return xString == xString[::-1]
+    # O(n) time 
+    # O(1) space
 
     inputNum = x
     res = 0
@@ -45,6 +47,5 @@ def palindromeNumber(x):
         res = res * 10 + x % 10
         x = x // 10
     return res == inputNum
-
 
 print(palindromeNumber(-121))

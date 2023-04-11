@@ -31,5 +31,6 @@ def maxArea(height):
             l += 1
     return res
 
-
+# O(n) time 
+# O(1) space
 print(maxArea([1,8,6,2,5,4,8,3,7]))

@@ -35,6 +35,7 @@ def twoSum(nums, target):
             complimentDict[nums[i]] = i
         else:
             return [i, complimentDict[comp]]
-
+# O(n) time
+# O(n) space
 
 print(twoSum([2, 7, 11, 15], 9))
