@@ -1,4 +1,4 @@
-"""
+/*
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 You must write an algorithm that runs in O(n) time and without using the division operation.
@@ -17,21 +17,21 @@ Constraints:
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
-"""
+*/
 
+function productOfArrayExceptSelf(nums: number[]): number[] {
+    const res: number[] = [];
+    for (let i = 0; i < nums.length; i++) {
+        let product = 1;
+        for (let j = 0; j < nums.length; j++) {
+            if (i != j) {
+                product *= nums[j];
+            }
+        }
+        res.push(product === -0 ? 0 : product);
+    }
+    return res;
+}
 
-def productExceptSelf(nums):
-    products = []
-    for i in range(len(nums)):
-        product = 1
-        for j in range(len(nums)):
-            if i != j:
-                product *= nums[j]
-        products.append(product)
-    return products
-    # O(n^2) time
-    # O(n) space
-    # could do better
-
-print(productExceptSelf([1, 2, 3, 4]))
-print(productExceptSelf([-1, 1, -4, -3, 3]))
+console.log(productOfArrayExceptSelf([1, 2, 3, 4]));
+console.log(productOfArrayExceptSelf([-1, 1, 0, -3, 3]));
