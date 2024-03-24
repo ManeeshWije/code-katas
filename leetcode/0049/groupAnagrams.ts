@@ -31,9 +31,9 @@ function groupAnagrams(strs: string[]): string[][] {
         }
     }
     const res: string[][] = [];
-    sortedWordDict.forEach((word) => {
-        res.push(word);
-    });
+    for (const [_, value] of sortedWordDict.entries()) {
+        res.push(value);
+    }
     return res;
 }
 
