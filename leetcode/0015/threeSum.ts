@@ -51,13 +51,6 @@ function threeSum(nums: number[]): number[][] {
     //     final.push(arr);
     // });
     // return final;
-    const res: number[][] = [];
-    const complementMap: Map<number, number> = new Map();
-    const sortedNums = Array.from(nums).sort((a, b) => a - b);
-    let left = 0;
-    let right = sortedNums.length - 1;
-    console.log(sortedNums);
-    return res;
 }
 
 console.log(threeSum([-1, 0, 1, 2, -1, -4])); // [[-1,-1,2],[-1,0,1]]
