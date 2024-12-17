@@ -87,7 +87,7 @@ def part2():
                         if (i, j) in seen:
                             row += "#"
                         else:
-                            row += "."
+                            row += " "
                     print(row)
                 print(t)
                 break
