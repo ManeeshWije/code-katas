@@ -29,23 +29,25 @@ from typing import List
 import math
 
 
-def minEatingSpeed(piles: List[int], h: int) -> int:
-    l = 1
-    r = res = max(piles)
-    while l <= r:
-        k = (l + r) // 2
-        total_time = 0
-        for p in piles:
-            total_time += math.ceil(p / k)
-        # not possible in time so move left pointer
-        if total_time > h:
-            l = k + 1
-        else:  # record the answer but see if we can minimize
-            res = k
-            r = k - 1
-    return res
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        l = 1
+        r = max(piles)
+        res = 0
+        while l <= r:
+            mid = (l + r) // 2
+            timeTaken = 0
+            for pile in piles:
+                timeTaken += math.ceil(pile / mid)
+            if timeTaken <= h:
+                res = mid
+                r = mid - 1
+            else:
+                l = mid + 1
+        return res
+        # O(n log n) time
 
-
-print(minEatingSpeed([3, 6, 7, 11], 8))
-print(minEatingSpeed([30, 11, 23, 4, 20], 5))
-print(minEatingSpeed([30, 11, 23, 4, 20], 6))
+sol = Solution()
+print(sol.minEatingSpeed([3, 6, 7, 11], 8))
+print(sol.minEatingSpeed([30, 11, 23, 4, 20], 5))
+print(sol.minEatingSpeed([30, 11, 23, 4, 20], 6))
